@@ -4,9 +4,12 @@ resource "aws_instance" "mongodb"{
  instance_type = var.instance_type
  vpc_security_group_ids = [ aws_security_group.mongodb.id ]
  
- tags ={
-    Name = "mongodb"
- }
+ tags =merge(
+  var.ec2_tags,
+    {
+     Name = "var.Instance_name"
+    }
+ )
 }
 
 resource "aws_security_group" "mongodb"{
@@ -27,6 +30,6 @@ resource "aws_security_group" "mongodb"{
   }
 
   tags = {
-    Name = "roboshop-var.Instance_name"
+    Name = "roboshop-${var.Instance_name}"
   }
 }

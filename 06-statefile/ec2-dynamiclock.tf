@@ -2,7 +2,7 @@ resource "aws_instance" "state_demo" {
   ami           = data.aws_ami.bhargava.id
   instance_type = var.instance_type
   vpc_security_group_ids = [
-    aws_security_group.roboshop.state_demo.id,
+    aws_security_group.state_demo.id,
     aws_security_group.common.id
   ]
 

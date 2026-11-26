@@ -3,9 +3,9 @@ output "ami_id" {
 }
 
 output "Instance_name" {
-    value = aws_instance.roboshop[*].tags.name
+    value = aws_instance.state_demo.tags.Name
 }
 
 output "Instance_id" {
-    value = aws_instance.roboshop[*].id
+    value = aws_instance.state_demo.id
 }

@@ -7,7 +7,7 @@ resource "aws_instance" "mongodb"{
  tags =merge(
   var.ec2_tags,
     {
-     Name = "var.Instance_name"
+     Name = "${var.Instance_name}"
     }
  )
 }

@@ -1,73 +1,73 @@
 variable "project" {
-    default = "roboshop"
+  default = "roboshop"
 }
 
 variable "environment" {
-    default = "dev"
+  default = "dev"
 }
 
 variable "zone_id" {
-    default = "Z07751372GOQ7XKXVY478"
+  default = "Z07751372GOQ7XKXVY478"
 }
 
 variable "domain_name" {
-    default = "bhar92s.store"
+  default = "bhar92s.store"
 }
 
 variable "Instances" {
-    type = map
-    default = {
-     mongodb = {
+  type = map(any)
+  default = {
+    mongodb = {
       instance_type = "t3.micro"
-      port_no = 27017
-     },
-     redis = {
+      port_no       = 27017
+    },
+    redis = {
       instance_type = "t3.micro"
-      port_no = 6379
-     },
-     mysql = {
+      port_no       = 6379
+    },
+    mysql = {
       instance_type = "t3.micro"
-      port_no = 3306
-     },
-     rabbitmq = {
+      port_no       = 3306
+    },
+    rabbitmq = {
       instance_type = "t3.micro"
-      port_no = 5672
-     },
-     catalogue = {
+      port_no       = 5672
+    },
+    catalogue = {
       instance_type = "t3.micro"
-      port_no = 8080
-     },
-     user = {
+      port_no       = 8080
+    },
+    user = {
       instance_type = "t3.micro"
-      port_no = 8080
-     },
-     cart = {
+      port_no       = 8080
+    },
+    cart = {
       instance_type = "t3.micro"
-      port_no = 8080
-     },
-     shipping = {
+      port_no       = 8080
+    },
+    shipping = {
       instance_type = "t3.micro"
-      port_no = 8080
-     },
-     payment = {
+      port_no       = 8080
+    },
+    payment = {
       instance_type = "t3.micro"
-      port_no = 8080
-     },
-     frontend = {
+      port_no       = 8080
+    },
+    frontend = {
       instance_type = "t3.micro"
-      port_no = 80
-     }
+      port_no       = 80
     }
+  }
 }
 
 
-variable  "ami_id" {
+variable "ami_id" {
   type        = string
   default     = "ami-0055977a6e828a4f4"
   description = "AMI ID of the instance"
 }
 
-variable  "instance_type" {
+variable "instance_type" {
   type        = string
   default     = "t3.micro"
   description = "Instance type of EC2"

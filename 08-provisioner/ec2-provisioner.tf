@@ -26,14 +26,28 @@ resource "aws_instance" "provisioner-demo" {
     host        = self.public_ip
   }
 
-  provisioner "remote-exec" {
+  /* provisioner "remote-exec" {
     inline = [
       "sudo dnf install nginx -y",
       "sudo systemctl start nginx",
-      "sudo systemctl enable nginx"
+      "sudo systemctl enable nginx",
+      "sudo systemctl restart nginx"
     ]
-  }    
+  }   */
+
+  provisioner "file" {
+    source      = "bootstrap.sh"
+    destination = "/tmp/bootstrap.sh"
+  }
+
   provisioner "remote-exec" {
+    inline = [
+     "chmod +x /tmp/bootstrap.sh",
+     "sudo sh /tmp/bootstrap.sh"
+    ] 
+  }
+  provisioner "remote-exec" {
+    when = destroy
     inline = [
       "sudo systemctl stop nginx"
     ]  

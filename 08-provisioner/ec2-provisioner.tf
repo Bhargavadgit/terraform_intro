@@ -33,8 +33,11 @@ resource "aws_instance" "provisioner-demo" {
       "sudo systemctl enable nginx"
     ]
   }    
-
-
+  provisioner "remote-exec" {
+    inline = [
+      "sudo systemctl stop nginx"
+    ]  
+  }
   tags = {
     Name = "${var.project}-${var.environment}-provisioner-demo"
   }

@@ -36,11 +36,11 @@ resource "aws_security_group" "state_demo" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
-  
-      from_port   = 0
-      to_port     = 0
-      protocol    = "tcp"
-      cidr_blocks = ["0.0.0.0/0"]
+
+    from_port   = 0
+    to_port     = 0
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
     Name = "${var.project}-${var.environment}-state_demo"
